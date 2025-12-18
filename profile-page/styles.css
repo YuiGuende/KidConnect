@@ -29,14 +29,28 @@ body {
 .header .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 16px 20px;
+    gap: 12px;
 }
 
 .logo {
     font-size: 24px;
     font-weight: 700;
     color: #00b4d8;
+}
+
+.page-title-header {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0ea5e9;
+    margin: 0;
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
 .nav {
@@ -593,8 +607,12 @@ textarea.form-input {
 /* Responsive */
 @media (max-width: 768px) {
     .header .container {
-        flex-direction: column;
-        gap: 16px;
+        flex-direction: row;
+        gap: 12px;
+    }
+    
+    .page-title-header {
+        font-size: 18px;
     }
 
     .nav {

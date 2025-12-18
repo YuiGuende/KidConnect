@@ -192,7 +192,10 @@ function openConversation(id) {
 
     // Mobile: hide sidebar, show chat
     if (window.innerWidth <= 768) {
-        sidebar.classList.remove("active")
+        sidebar.classList.add("hidden")
+        chatMain.classList.add("active")
+    } else {
+        chatMain.classList.add("active")
     }
 
     // Scroll to bottom
@@ -458,7 +461,19 @@ function setupEventListeners() {
     closeInfoBtn.addEventListener("click", () => infoPanel.classList.remove("active"))
 
     backBtn.addEventListener("click", () => {
-        sidebar.classList.add("active")
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove("hidden")
+            chatMain.classList.remove("active")
+        } else {
+            chatMain.classList.remove("active")
+        }
+        // Hide chat elements
+        document.querySelector(".empty-state").style.display = "flex"
+        chatHeader.style.display = "none"
+        chatMessages.style.display = "none"
+        chatInputContainer.style.display = "none"
+        infoPanel.classList.remove("active")
+        currentConversation = null
     })
 
     searchInput.addEventListener("input", (e) => {
@@ -483,7 +498,8 @@ function setupEventListeners() {
 
     // Mobile sidebar toggle
     if (window.innerWidth <= 768) {
-        sidebar.classList.add("active")
+        sidebar.classList.remove("hidden")
+        chatMain.classList.remove("active")
     }
 }
 
