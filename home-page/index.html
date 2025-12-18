@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidConnect - Trang Chủ</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .app-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+            min-height: 100vh;
+            padding-bottom: 80px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 1024px) {
+            .app-content {
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+                background: white;
+            }
+        }
+        
+        .notification-dot {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 10px;
+            height: 10px;
+            background: #ef4444;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .scroll-container {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .profile-card {
+            flex-shrink: 0;
+            width: 140px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 8px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        @media (min-width: 1024px) {
+            .bottom-nav {
+                max-width: 500px;
+            }
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            color: #9ca3af;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+        
+        .nav-item.active {
+            color: #0ea5e9;
+        }
+        
+        .nav-item i {
+            font-size: 1.25rem;
+        }
+        
+        .upcoming-card {
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            color: white;
+        }
+        
+        .utility-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s;
+        }
+        
+        .utility-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+        
+        .utility-icon i {
+            font-size: 1.5rem;
+            color: #0ea5e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-content">
+            <!-- Top Bar (Header) -->
+            <div class="bg-white px-4 pt-4 pb-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">Chào, Mẹ Lan 👋</h1>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <i class="fas fa-bell text-gray-600 text-xl"></i>
+                            <span class="notification-dot"></span>
+                        </div>
+                        <a href="#" class="relative">
+                            <i class="fas fa-comment-dots text-gray-600 text-xl"></i>
+                            <span class="notification-dot"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search Input -->
+            <div class="px-4 mb-6">
+                <div class="bg-white rounded-2xl shadow-sm px-4 py-3 flex items-center gap-3 border border-gray-100">
+                    <i class="fas fa-search text-gray-400"></i>
+                    <input type="text" placeholder="Tìm bạn chơi, địa điểm..." class="flex-1 outline-none text-gray-600 placeholder-gray-400">
+                    <i class="fas fa-filter text-blue-500"></i>
+                </div>
+            </div>
+            
+            <!-- Section: Sắp diễn ra -->
+            <div class="px-4 mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-3">Sắp diễn ra</h2>
+                <div class="upcoming-card rounded-2xl p-5 shadow-sm">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold mb-2">Bóng đá cùng Bé Tuấn Anh</h3>
+                            <div class="flex items-center gap-2 mb-2 text-sm opacity-90">
+                                <i class="fas fa-clock"></i>
+                                <span>17:00 Chiều nay</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm opacity-90">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Tại: Công viên Cầu Giấy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="bg-white text-blue-500 px-4 py-2 rounded-xl font-semibold text-sm w-full hover:bg-gray-50 transition">
+                        Xem chi tiết
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Section: Gợi ý cho bé -->
+            <div class="px-4 mb-6">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-lg font-bold text-gray-800">Bạn mới phù hợp ⚡</h2>
+                    <a href="#" class="text-blue-500 text-sm font-semibold">Xem tất cả</a>
+                </div>
+                <div class="scroll-container flex gap-3 pb-2">
+                    <!-- Profile Card 1 -->
+                    <div class="profile-card bg-white rounded-2xl shadow-sm p-4 text-center">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
+                            MA
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1">Minh Anh</h3>
+                        <p class="text-xs text-gray-500 mb-3">7 tuổi</p>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-xl text-xs font-semibold w-full hover:bg-blue-600 transition">
+                            Connect
+                        </button>
+                    </div>
+                    
+                    <!-- Profile Card 2 -->
+                    <div class="profile-card bg-white rounded-2xl shadow-sm p-4 text-center">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
+                            TA
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1">Tuấn Anh</h3>
+                        <p class="text-xs text-gray-500 mb-3">8 tuổi</p>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-xl text-xs font-semibold w-full hover:bg-blue-600 transition">
+                            Connect
+                        </button>
+                    </div>
+                    
+                    <!-- Profile Card 3 -->
+                    <div class="profile-card bg-white rounded-2xl shadow-sm p-4 text-center">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
+                            LC
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1">Linh Chi</h3>
+                        <p class="text-xs text-gray-500 mb-3">6 tuổi</p>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-xl text-xs font-semibold w-full hover:bg-blue-600 transition">
+                            Connect
+                        </button>
+                    </div>
+                    
+                    <!-- Profile Card 4 -->
+                    <div class="profile-card bg-white rounded-2xl shadow-sm p-4 text-center">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
+                            QH
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1">Quang Huy</h3>
+                        <p class="text-xs text-gray-500 mb-3">8 tuổi</p>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-xl text-xs font-semibold w-full hover:bg-blue-600 transition">
+                            Connect
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section: Tiện ích nhanh -->
+            <div class="px-4 mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">Tiện ích nhanh</h2>
+                <div class="grid grid-cols-4 gap-4">
+                    <a href="#" class="flex flex-col items-center gap-2">
+                        <div class="utility-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium">Tạo lịch</span>
+                    </a>
+                    
+                    <a href="#" class="flex flex-col items-center gap-2">
+                        <div class="utility-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium">Địa điểm</span>
+                    </a>
+                    
+                    <a href="#" class="flex flex-col items-center gap-2">
+                        <div class="utility-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium">Sự kiện</span>
+                    </a>
+                    
+                    <a href="#" class="flex flex-col items-center gap-2">
+                        <div class="utility-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium">Cẩm nang</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Navigation Bar -->
+        <div class="bottom-nav">
+            <div class="flex justify-around items-center">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Trang chủ</span>
+                </a>
+                <a href="../search-page/search-form.html" class="nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>Tìm Bạn</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Cộng đồng</span>
+                </a>
+                <a href="../chat-page/index.html" class="nav-item">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="../profile-page/index.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

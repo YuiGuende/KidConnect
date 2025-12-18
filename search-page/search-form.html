@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidConnect - Tìm Bạn Chơi</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="form-styles.css">
+</head>
+<body>
+    <!-- Main Container Wrapper for Desktop -->
+    <div class="main-container-wrapper">
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-content">
+            <a href="../home-page/index.html" class="nav-icon-btn" title="Trang chủ">
+                <i class="bi bi-house-fill"></i>
+            </a>
+            <a href="../home-page/index.html" class="logo">KidConnect</a>
+            <div class="nav-icon-btn-wrapper">
+                <a href="#" class="nav-icon-btn chat-btn" title="Tin nhắn">
+                    <i class="bi bi-chat-dots-fill"></i>
+                    <span class="notification-badge">3</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="min-h-screen pb-8 pt-4 px-4">
+        <div class="max-w-md mx-auto">
+            <h1 class="text-2xl md:text-3xl font-bold text-center mb-2 mt-4" style="font-family: 'Nunito', sans-serif; color: #1f2937;">
+                Tìm Bạn Chơi Cho Con
+            </h1>
+            <p class="text-center text-gray-600 mb-8 text-sm">
+                Điền thông tin để tìm bạn chơi phù hợp nhất
+            </p>
+
+            <!-- Search Form -->
+            <form id="searchForm" class="search-form">
+                <!-- Child's Age -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="bi bi-calendar3 text-primary"></i>
+                        Độ tuổi của con
+                    </label>
+                    <select name="childAge" id="childAge" class="form-input" required>
+                        <option value="">Chọn độ tuổi</option>
+                        <option value="6">6 tuổi</option>
+                        <option value="7">7 tuổi</option>
+                        <option value="8">8 tuổi</option>
+                        <option value="9">9 tuổi</option>
+                        <option value="10">10 tuổi</option>
+                    </select>
+                </div>
+
+                <!-- Distance Range -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="bi bi-geo-alt text-primary"></i>
+                        Khoảng cách tối đa (km)
+                    </label>
+                    <div class="range-container">
+                        <input type="range" name="distance" id="distance" min="1" max="10" value="5" class="range-input">
+                        <div class="range-value">
+                            <span id="distanceValue">5</span> km
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="bi bi-heart text-primary"></i>
+                        Sở thích của con (chọn nhiều)
+                    </label>
+                    <div class="interests-grid" id="interestsGrid">
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Vẽ tranh">
+                            <span>Vẽ tranh</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Đọc sách">
+                            <span>Đọc sách</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Bóng đá">
+                            <span>Bóng đá</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Ngoài trời">
+                            <span>Ngoài trời</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Nhảy múa">
+                            <span>Nhảy múa</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Lego">
+                            <span>Lego</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Kể chuyện">
+                            <span>Kể chuyện</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Cờ vua">
+                            <span>Cờ vua</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Khoa học">
+                            <span>Khoa học</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Thủ công">
+                            <span>Thủ công</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Nấu ăn">
+                            <span>Nấu ăn</span>
+                        </label>
+                        <label class="interest-checkbox">
+                            <input type="checkbox" name="interests" value="Xe đạp">
+                            <span>Xe đạp</span>
+                        </label>
+                    </div>
+                    <!-- Add Custom Interest -->
+                    <div class="add-interest-container">
+                        <input type="text" id="customInterest" placeholder="Thêm sở thích mới..." class="custom-interest-input">
+                        <button type="button" id="addInterestBtn" class="add-interest-btn">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Verified Only -->
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="verifiedOnly" id="verifiedOnly">
+                        <span>Chỉ hiển thị hồ sơ đã xác thực</span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">
+                    <i class="bi bi-search me-2"></i>
+                    Tìm kiếm
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Screen (Hidden by default) -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <h2 class="loading-title">Đang tìm bạn chơi phù hợp...</h2>
+            <p class="loading-message">AI đang phân tích và gợi ý những bạn chơi tốt nhất cho con bạn</p>
+        </div>
+    </div>
+
+    <script src="form-script.js"></script>
+    </div>
+</body>
+</html>
