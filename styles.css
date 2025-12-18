@@ -95,14 +95,24 @@ body {
 .btn-primary-large {
     background: var(--primary);
     color: white;
-    padding: 1rem 2rem;
-    border-radius: 16px;
+    padding: 0.875rem 1.5rem;
+    border-radius: 14px;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .btn-primary-large {
+        padding: 1rem 2rem;
+        border-radius: 16px;
+        font-size: 1.1rem;
+        width: auto;
+    }
 }
 
 .btn-primary-large:hover {
@@ -114,14 +124,24 @@ body {
 .btn-secondary-large {
     background: white;
     color: var(--primary);
-    padding: 1rem 2rem;
-    border-radius: 16px;
+    padding: 0.875rem 1.5rem;
+    border-radius: 14px;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
     border: 2px solid var(--primary);
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .btn-secondary-large {
+        padding: 1rem 2rem;
+        border-radius: 16px;
+        font-size: 1.1rem;
+        width: auto;
+    }
 }
 
 .btn-secondary-large:hover {
@@ -151,9 +171,15 @@ body {
 .hero-section {
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdfa 100%);
     padding-top: 80px;
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .hero-section {
+        min-height: 100vh;
+    }
 }
 
 .hero-visual {
@@ -167,11 +193,24 @@ body {
 /* Pain Points Cards */
 .pain-card {
     background: white;
-    padding: 2.5rem;
-    border-radius: 24px;
+    padding: 1.5rem;
+    border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: 1px solid var(--gray-200);
+}
+
+@media (min-width: 640px) {
+    .pain-card {
+        padding: 2rem;
+        border-radius: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .pain-card {
+        padding: 2.5rem;
+    }
 }
 
 .pain-card:hover {
@@ -180,25 +219,54 @@ body {
 }
 
 .icon-wrapper {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+@media (min-width: 640px) {
+    .icon-wrapper {
+        width: 70px;
+        height: 70px;
+        border-radius: 18px;
+    }
+}
+
+@media (min-width: 768px) {
+    .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+    }
+}
+
 /* Feature Cards */
 .feature-card {
     background: white;
-    padding: 2.5rem;
-    border-radius: 24px;
+    padding: 1.5rem;
+    border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: 1px solid var(--gray-200);
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+@media (min-width: 640px) {
+    .feature-card {
+        padding: 2rem;
+        border-radius: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .feature-card {
+        padding: 2.5rem;
+    }
 }
 
 .feature-card:hover {
@@ -208,25 +276,54 @@ body {
 }
 
 .feature-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
 }
 
+@media (min-width: 640px) {
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 18px;
+    }
+}
+
+@media (min-width: 768px) {
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+    }
+}
+
 /* Step Cards */
 .step-card {
     background: white;
-    padding: 2.5rem;
-    border-radius: 24px;
+    padding: 1.5rem;
+    border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: 1px solid var(--gray-200);
     text-align: center;
     position: relative;
+}
+
+@media (min-width: 640px) {
+    .step-card {
+        padding: 2rem;
+        border-radius: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .step-card {
+        padding: 2.5rem;
+    }
 }
 
 .step-card:hover {
@@ -236,47 +333,91 @@ body {
 
 .step-number {
     position: absolute;
-    top: -20px;
+    top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background: var(--primary);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
     box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
+@media (min-width: 640px) {
+    .step-number {
+        top: -20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
 .step-icon {
-    width: 100px;
-    height: 100px;
-    border-radius: 24px;
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 2rem auto 1rem;
+    margin: 1.5rem auto 1rem;
+}
+
+@media (min-width: 640px) {
+    .step-icon {
+        width: 85px;
+        height: 85px;
+        margin: 1.75rem auto 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .step-icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 24px;
+        margin: 2rem auto 1rem;
+    }
 }
 
 /* Pricing Cards */
 .pricing-card {
     background: white;
-    padding: 2.5rem;
-    border-radius: 24px;
+    padding: 1.5rem;
+    border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: 2px solid var(--gray-200);
     position: relative;
 }
 
+@media (min-width: 640px) {
+    .pricing-card {
+        padding: 2rem;
+        border-radius: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .pricing-card {
+        padding: 2.5rem;
+    }
+}
+
 .pricing-card.featured {
     border-color: var(--primary);
-    transform: scale(1.05);
     box-shadow: 0 12px 40px rgba(14, 165, 233, 0.2);
+}
+
+@media (min-width: 1024px) {
+    .pricing-card.featured {
+        transform: scale(1.05);
+    }
 }
 
 .pricing-card:hover {
@@ -284,8 +425,10 @@ body {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
-.pricing-card.featured:hover {
-    transform: scale(1.05) translateY(-8px);
+@media (min-width: 1024px) {
+    .pricing-card.featured:hover {
+        transform: scale(1.05) translateY(-8px);
+    }
 }
 
 .badge-popular {
@@ -342,11 +485,24 @@ body {
 /* Testimonial Cards */
 .testimonial-card {
     background: white;
-    padding: 2.5rem;
-    border-radius: 24px;
+    padding: 1.5rem;
+    border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: 1px solid var(--gray-200);
+}
+
+@media (min-width: 640px) {
+    .testimonial-card {
+        padding: 2rem;
+        border-radius: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .testimonial-card {
+        padding: 2.5rem;
+    }
 }
 
 .testimonial-card:hover {
@@ -426,7 +582,36 @@ body {
     transition-delay: 0.5s;
 }
 
-/* Responsive */
+/* Responsive Improvements */
+@media (max-width: 640px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .hero-section {
+        padding-top: 70px;
+    }
+    
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+        min-width: auto;
+        padding: 0.875rem 1.5rem;
+    }
+    
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+    
+    .pricing-card.featured:hover {
+        transform: translateY(-8px);
+    }
+}
+
 @media (max-width: 768px) {
     .pricing-card.featured {
         transform: scale(1);
@@ -435,14 +620,25 @@ body {
     .pricing-card.featured:hover {
         transform: translateY(-8px);
     }
-    
-    .hero-section {
-        padding-top: 100px;
+}
+
+/* Container responsive padding */
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
-    
-    .download-btn {
-        width: 100%;
-        justify-content: center;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 }
 
