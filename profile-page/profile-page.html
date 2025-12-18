@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Hồ Sơ Gia Đình - KidConnect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <h1 class="logo">KidConnect</h1>
+        <nav class="nav">
+            <a href="#" class="nav-link">Trang chủ</a>
+            <a href="#" class="nav-link active">Hồ sơ</a>
+            <a href="#" class="nav-link">Tìm kiếm</a>
+        </nav>
+    </div>
+</header>
+
+<main class="main-content">
+    <div class="container">
+        <!-- Page Header with Stats -->
+        <div class="page-header">
+            <div>
+                <h2 class="page-title">Quản Lý Hồ Sơ Gia Đình</h2>
+                <p class="page-subtitle">Quản lý thông tin gia đình và con cái của bạn</p>
+            </div>
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalChildren">0</div>
+                    <div class="stat-label">Tổng số con</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avgAge">0</div>
+                    <div class="stat-label">Tuổi TB</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Parent Profile Section with Tabs -->
+        <section class="profile-section">
+            <div class="section-header">
+                <h3 class="section-title">Thông Tin Phụ Huynh</h3>
+                <div class="parent-tabs">
+                    <button class="tab-btn active" data-parent="father" onclick="switchParentTab('father')">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Bố
+                    </button>
+                    <button class="tab-btn" data-parent="mother" onclick="switchParentTab('mother')">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Mẹ
+                    </button>
+                </div>
+            </div>
+
+            <form id="parentForm" class="parent-form">
+                <!-- Avatar Upload -->
+                <div class="avatar-upload-section">
+                    <div class="avatar-preview" id="parentAvatarPreview">
+                        <svg width="60" height="60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="avatar-upload-actions">
+                        <input type="file" id="parentAvatar" accept="image/*" style="display: none;" onchange="handleParentAvatarChange(event)">
+                        <button type="button" class="btn-secondary" onclick="document.getElementById('parentAvatar').click()">
+                            Thay đổi ảnh
+                        </button>
+                        <button type="button" class="btn-text" onclick="removeParentAvatar()">Xóa ảnh</button>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Họ và tên</label>
+                        <input type="text" id="parentName" class="form-input" disabled required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Ngày sinh</label>
+                        <input type="date" id="parentBirthday" class="form-input" disabled required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Số CCCD</label>
+                        <input type="text" id="parentId" class="form-input" disabled required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="tel" id="parentPhone" class="form-input" disabled required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Nghề nghiệp</label>
+                        <input type="text" id="parentJob" class="form-input" disabled required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="parentEmail" class="form-input" disabled required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="toggleEditParent()">Chỉnh sửa</button>
+                    <button type="button" class="btn-secondary" onclick="exportData()">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Export dữ liệu
+                    </button>
+                </div>
+
+                <div id="parentFormActions" class="form-actions" style="display: none;">
+                    <button type="submit" class="btn-primary">Lưu thay đổi</button>
+                    <button type="button" class="btn-text" onclick="cancelEditParent()">Hủy</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Children Section -->
+        <section class="profile-section">
+            <div class="section-header">
+                <h3 class="section-title">Hồ Sơ Con Cái</h3>
+                <div class="section-actions">
+                    <div class="search-box">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên..." onkeyup="searchChildren()">
+                    </div>
+                    <button class="btn-primary" onclick="openChildModal()">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Thêm Hồ Sơ Con
+                    </button>
+                </div>
+            </div>
+
+            <div id="childrenGrid" class="children-grid"></div>
+        </section>
+    </div>
+</main>
+
+<!-- Child Modal -->
+<div id="childModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 id="modalTitle">Thêm Hồ Sơ Con</h4>
+            <button class="modal-close" onclick="closeChildModal()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <form id="childForm" class="modal-body">
+            <!-- Child Avatar Upload -->
+            <div class="avatar-upload-section">
+                <div class="avatar-preview" id="childAvatarPreview">
+                    <svg width="50" height="50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="avatar-upload-actions">
+                    <input type="file" id="childAvatar" accept="image/*" style="display: none;" onchange="handleChildAvatarChange(event)">
+                    <button type="button" class="btn-secondary btn-sm" onclick="document.getElementById('childAvatar').click()">
+                        Chọn ảnh
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Họ và tên <span class="required">*</span></label>
+                    <input type="text" id="childName" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tuổi <span class="required">*</span></label>
+                    <input type="number" id="childAge" class="form-input" min="0" max="18" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Giới tính <span class="required">*</span></label>
+                    <select id="childGender" class="form-input" required>
+                        <option value="">Chọn giới tính</option>
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ngày sinh</label>
+                    <input type="date" id="childBirthday" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" id="childAddress" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Sở thích</label>
+                    <input type="text" id="childHobbies" class="form-input" placeholder="VD: Đọc sách, vẽ tranh">
+                </div>
+
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label class="form-label">Mô tả thêm</label>
+                    <textarea id="childDescription" class="form-input" rows="3" placeholder="Thông tin thêm về con..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-text" onclick="closeChildModal()">Hủy</button>
+                <button type="submit" class="btn-primary">Lưu hồ sơ</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
