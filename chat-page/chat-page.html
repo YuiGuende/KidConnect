@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayChat - Kết nối cha mẹ yêu con</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Main Container -->
+<div class="chat-container">
+    <!-- Sidebar: Conversation List -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h1 class="sidebar-title">Tin nhắn</h1>
+            <button class="btn-icon" id="newChatBtn" aria-label="Tạo nhóm mới">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input type="text" class="search-input" placeholder="Tìm kiếm nhóm chat..." id="searchInput">
+        </div>
+
+        <!-- Conversation List -->
+        <div class="conversation-list" id="conversationList">
+            <!-- Conversations will be dynamically added here -->
+        </div>
+    </aside>
+
+    <!-- Main Chat Window -->
+    <main class="chat-main" id="chatMain">
+        <div class="empty-state">
+            <div class="empty-state-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+            </div>
+            <h2 class="empty-state-title">Chọn một nhóm để bắt đầu trò chuyện</h2>
+            <p class="empty-state-text">Kết nối với các cha mẹ khác và chia sẻ trải nghiệm về khu vui chơi yêu thích</p>
+        </div>
+
+        <!-- Chat Header (hidden initially) -->
+        <div class="chat-header" id="chatHeader" style="display: none;">
+            <button class="btn-back" id="backBtn" aria-label="Quay lại">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <div class="chat-header-info">
+                <img class="chat-avatar" id="chatAvatar" src="/placeholder.svg" alt="Avatar">
+                <div class="chat-header-text">
+                    <h3 class="chat-name" id="chatName"></h3>
+                    <p class="chat-status" id="chatStatus">3 thành viên</p>
+                </div>
+            </div>
+            <button class="btn-icon" id="infoBtn" aria-label="Thông tin nhóm">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Chat Messages (hidden initially) -->
+        <div class="chat-messages" id="chatMessages" style="display: none;">
+            <!-- Messages will be dynamically added here -->
+        </div>
+
+        <!-- Chat Input (hidden initially) -->
+        <div class="chat-input-container" id="chatInputContainer" style="display: none;">
+            <button class="btn-icon" aria-label="Đính kèm">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                </svg>
+            </button>
+            <input type="text" class="chat-input" id="messageInput" placeholder="Aa">
+            <button class="btn-icon btn-emoji" aria-label="Emoji">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+                </svg>
+            </button>
+            <button class="btn-send" id="sendBtn" aria-label="Gửi">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m22 2-7 20-4-9-9-4Z"/>
+                    <path d="M22 2 11 13"/>
+                </svg>
+            </button>
+        </div>
+    </main>
+
+    <!-- Info Panel -->
+    <aside class="info-panel" id="infoPanel">
+        <div class="info-header">
+            <h2 class="info-title">Thông tin nhóm</h2>
+            <button class="btn-close" id="closeInfoBtn" aria-label="Đóng">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6 6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="info-content" id="infoContent">
+            <!-- Playground Info Section -->
+            <div class="playground-card">
+                <img class="playground-image" id="playgroundImage" src="/placeholder.svg" alt="Khu vui chơi">
+                <div class="playground-details">
+                    <h3 class="playground-name" id="playgroundName">Tên khu vui chơi</h3>
+                    <div class="playground-meta">
+                            <span class="playground-rating">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD93D" stroke="#FFD93D">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <span id="playgroundRating">4.8</span>
+                            </span>
+                        <span class="playground-distance" id="playgroundDistance">2.5 km</span>
+                    </div>
+                    <p class="playground-address" id="playgroundAddress">Địa chỉ khu vui chơi</p>
+                </div>
+            </div>
+
+            <!-- Members Section -->
+            <div class="info-section">
+                <h4 class="section-title">Thành viên <span class="member-count" id="memberCount">(0)</span></h4>
+                <div class="members-list" id="membersList">
+                    <!-- Members will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="info-section">
+                <button class="action-btn action-btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    Mời bạn bè
+                </button>
+                <button class="action-btn action-btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <path d="M16 2v4M8 2v4M3 10h18"/>
+                    </svg>
+                    Lên lịch gặp mặt
+                </button>
+                <button class="action-btn action-btn-danger">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+                    </svg>
+                    Rời nhóm
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Create Group Modal -->
+    <div class="modal-overlay" id="createGroupModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">Tạo nhóm chat mới</h2>
+                <button class="btn-close-modal" id="closeModalBtn">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="createGroupForm">
+                    <div class="form-group">
+                        <label class="form-label">Tên nhóm chat *</label>
+                        <input type="text" class="form-input" id="groupName-input" placeholder="VD: Nhóm cha mẹ..." required>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Thông tin khu vui chơi</h3>
+
+                        <div class="form-group">
+                            <label class="form-label">Ảnh khu vui chơi</label>
+                            <div class="image-upload-container" onclick="document.getElementById('playgroundImageInput').click()">
+                                <input type="file" id="playgroundImageInput" accept="image/*" style="display: none;">
+                                <div class="image-preview" id="imagePreview">
+                                    <p>Nhấn để chọn ảnh</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Tên địa điểm *</label>
+                            <input type="text" class="form-input" id="playgroundName-input" placeholder="VD: Công viên Lotte Mart" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Địa chỉ *</label>
+                            <input type="text" class="form-input" id="playgroundAddress-input" placeholder="Địa chỉ..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Mô tả</label>
+                            <textarea class="form-textarea" id="playgroundDescription-input" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Thêm thành viên</h3>
+                        <div class="friends-list" id="friendsList"></div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Hủy</button>
+                        <button type="submit" class="btn-primary">Tạo nhóm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
