@@ -84,6 +84,7 @@ body {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-primary:hover {
@@ -160,6 +161,7 @@ body {
     display: inline-block;
     transition: all 0.3s ease;
     border: 2px solid var(--primary);
+    text-align: center;
 }
 
 .btn-outline:hover {
@@ -193,7 +195,6 @@ body {
 /* Pain Points Cards */
 .pain-card {
     background: white;
-    padding: 1.5rem;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
@@ -202,20 +203,27 @@ body {
 
 @media (min-width: 640px) {
     .pain-card {
-        padding: 2rem;
         border-radius: 24px;
-    }
-}
-
-@media (min-width: 768px) {
-    .pain-card {
-        padding: 2.5rem;
     }
 }
 
 .pain-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.pain-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: var(--gray-100);
+}
+
+.pain-image-wrapper img {
+    transition: transform 0.3s ease;
+}
+
+.pain-card:hover .pain-image-wrapper img {
+    transform: scale(1.05);
 }
 
 .icon-wrapper {
@@ -225,6 +233,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
@@ -503,6 +512,46 @@ body {
     .testimonial-card {
         padding: 2.5rem;
     }
+}
+
+/* Children & Parents Cards */
+.children-parent-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+}
+
+@media (min-width: 640px) {
+    .children-parent-card {
+        border-radius: 24px;
+    }
+}
+
+.children-parent-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary);
+}
+
+.children-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: var(--gray-100);
+}
+
+.children-image-wrapper img {
+    transition: transform 0.3s ease;
+}
+
+.children-parent-card:hover .children-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.children-info {
+    border-top: 1px solid var(--gray-200);
 }
 
 .testimonial-card:hover {
